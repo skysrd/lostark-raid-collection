@@ -2,7 +2,8 @@
 
 | HTTP TYPE | Function | URI |
 | --- | --- | --- |
-| GET | 전체 유저 체크 내역 | /Users | 
-| GET | 개별 유저 체크 내역 | /Users |
-| PATCH | 개별 유저 수정 | /Users |
-| 
+
+## 요구 기능
+* 
+
+![image](https://user-images.githubusercontent.com/37787079/178679064-f6c0c0b3-dcb3-4436-ac47-fc3980716aa6.png)
