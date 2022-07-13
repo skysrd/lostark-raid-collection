@@ -18,6 +18,9 @@ public class Character {
     @Column(name = "character_id")
     private Long id;
 
+    @JoinColumn(name = "parent_user_id")
+    private User parentUser;
+
     @Column(name = "character_name")
     private String name;
 
