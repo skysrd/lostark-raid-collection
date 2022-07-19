@@ -1,20 +1,21 @@
 package skysrd.lostarkraidcollection.domain.entity;
 
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import skysrd.lostarkraidcollection.domain.entity.enumurated.Authority;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "USER")
+@Table(name = "MEMBER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class User {
+public class Member {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private long id;
 
     @Column(name = "username")
@@ -25,5 +26,8 @@ public class User {
 
     @Column(name = "user_name")
     private String nickname;
+
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
 
 }

@@ -1,10 +1,8 @@
 package skysrd.lostarkraidcollection.domain.entity;
 
 import lombok.AccessLevel;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import skysrd.lostarkraidcollection.domain.CharacterType;
 
 import javax.persistence.*;
 
@@ -20,7 +18,7 @@ public class Character {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User parentUser;
+    private Member parentMember;
 
     @Column(name = "character_name")
     private String name;
