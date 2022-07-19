@@ -1,4 +1,5 @@
 package skysrd.lostarkraidcollection.service;
 
-public interface CharacterRaidService {
+public class CharacterRaidService {
+
 }

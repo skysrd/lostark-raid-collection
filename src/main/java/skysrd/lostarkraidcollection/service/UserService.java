@@ -1,5 +1,5 @@
 package skysrd.lostarkraidcollection.service;
 
-public interface UserService {
+public class UserService {
 
 }
