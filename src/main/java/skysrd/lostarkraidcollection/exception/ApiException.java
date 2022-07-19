@@ -3,7 +3,9 @@ package skysrd.lostarkraidcollection.exception;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
-import skysrd.lostarkraidcollection.result.JsonResultData;v@Getter
+import skysrd.lostarkraidcollection.result.JsonResultData;
+
+@Getter
 public class ApiException extends RuntimeException{
     private JsonResultData errorEntity;
 
