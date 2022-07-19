@@ -10,7 +10,6 @@ import skysrd.lostarkraidcollection.service.UserService;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    private final UserCharacterService userCharacterService;
 
 
 

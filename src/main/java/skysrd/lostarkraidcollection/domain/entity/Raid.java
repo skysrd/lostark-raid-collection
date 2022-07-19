@@ -20,11 +20,11 @@ public class Raid {
     private String name;
 
     @Column("raid_start_level")
-    private int startLevel;
+    private Integer startLevel;
 
     @Column("raid_end_level")
-    private int endLevel;
+    private Integer endLevel;
 
     @Column("raid_gold")
-    private int gold;
+    private Integer gold;
 }
