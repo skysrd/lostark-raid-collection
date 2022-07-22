@@ -7,15 +7,22 @@ import org.springframework.transaction.annotation.Transactional;
 import skysrd.lostarkraidcollection.domain.entity.Character;
 import skysrd.lostarkraidcollection.domain.entity.CharacterRaid;
 import skysrd.lostarkraidcollection.domain.entity.Member;
+import skysrd.lostarkraidcollection.domain.request.CharacterRaidRequest;
 import skysrd.lostarkraidcollection.repository.CharacterRaidRepository;
+import skysrd.lostarkraidcollection.repository.CharacterRepository;
+import skysrd.lostarkraidcollection.repository.MemberRepository;
+import skysrd.lostarkraidcollection.repository.RaidRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CharacterRaidService {
     private final CharacterRaidRepository characterRaidRepository;
+    private final CharacterRepository characterRepository;
+    private final RaidRepository raidRepository;
 
     public List<CharacterRaid> characterRaids() {
         return characterRaidRepository.findAll();
@@ -25,11 +32,26 @@ public class CharacterRaidService {
         return characterRaidRepository.findAllByCharacter(character);
     }
 
-    public void checkRaid(CharacterRaid characterRaid) {
-        characterRaid.checkRaid();
+    public CharacterRaid createCharacterRaid(CharacterRaidRequest characterRaidRequest) {
+        CharacterRaid characterRaid = CharacterRaid.builder()
+                .character(characterRepository.findCharacterById(characterRaidRequest.getCharacterId()))
+                .raid(raidRepository.findRaidById(characterRaidRequest.getRaidId()))
+                .build();
+
+        characterRaidRepository.save(characterRaid);
+        return characterRaid;
+
     }
 
-    public void uncheckRaid(CharacterRaid characterRaid) {
+    public CharacterRaid checkRaid(CharacterRaidRequest characterRaidRequest) {
+        Character character = characterRepository.findById(characterRaidRequest.getCharacterId());
+        characterRaid.checkRaid();
+        return characterRaid;
+    }
+
+    public CharacterRaid uncheckRaid(CharacterRaidRequest characterRaidRequest) {
+        Character character = characterRepository.findById(characterRaidRequest.getCharacterId());
         characterRaid.uncheckRaid();
+        return characterRaid;
     }
 }
