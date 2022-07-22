@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import skysrd.lostarkraidcollection.service.AuthService;
+import skysrd.lostarkraidcollection.auth.service.AuthService;
+import skysrd.lostarkraidcollection.domain.entity.request.MemberRequest;
 
 @RestController
 @RequestMapping("/auth")

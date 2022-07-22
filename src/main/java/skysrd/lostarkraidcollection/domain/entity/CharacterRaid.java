@@ -1,6 +1,7 @@
 package skysrd.lostarkraidcollection.domain.entity;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,19 @@ public class CharacterRaid {
 
     @Column(name = "character_raid_status")
     private Boolean status;
+
+    @Builder
+    public CharacterRaid(Character character, Raid raid) {
+        this.character=character;
+        this.raid=raid;
+        this.status=false;
+    }
+
+    public void checkRaid() {
+        this.status=true;
+    }
+
+    public void uncheckRaid() {
+        this.status=false;
+    }
 }
