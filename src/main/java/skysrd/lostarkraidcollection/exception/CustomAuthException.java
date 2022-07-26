@@ -1,6 +1,7 @@
 package skysrd.lostarkraidcollection.exception;
 
 import lombok.Getter;
+import skysrd.lostarkraidcollection.result.JsonResultData;
 
 @Getter
 public class CustomAuthException extends RuntimeException{

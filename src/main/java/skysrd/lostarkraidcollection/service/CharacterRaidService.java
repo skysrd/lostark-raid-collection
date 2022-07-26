@@ -5,53 +5,57 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import skysrd.lostarkraidcollection.domain.entity.Character;
-import skysrd.lostarkraidcollection.domain.entity.CharacterRaid;
-import skysrd.lostarkraidcollection.domain.entity.Member;
-import skysrd.lostarkraidcollection.domain.request.CharacterRaidRequest;
-import skysrd.lostarkraidcollection.repository.CharacterRaidRepository;
+import skysrd.lostarkraidcollection.domain.entity.CharacterContent;
+import skysrd.lostarkraidcollection.domain.request.CharacterContentRequest;
+import skysrd.lostarkraidcollection.repository.CharacterContentRepository;
 import skysrd.lostarkraidcollection.repository.CharacterRepository;
 import skysrd.lostarkraidcollection.repository.MemberRepository;
-import skysrd.lostarkraidcollection.repository.RaidRepository;
+import skysrd.lostarkraidcollection.repository.ContentService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CharacterRaidService {
-    private final CharacterRaidRepository characterRaidRepository;
+    private final CharacterContentRepository characterContentRepository;
     private final CharacterRepository characterRepository;
-    private final RaidRepository raidRepository;
+    private final MemberRepository memberRepository;
+    private final ContentService raidRepository;
 
-    public List<CharacterRaid> characterRaids() {
-        return characterRaidRepository.findAll();
+    public List<CharacterContent> characterRaids() {
+        return characterContentRepository.findAll();
     }
 
-    public List<CharacterRaid> characterRaids(Character character) {
-        return characterRaidRepository.findAllByCharacter(character);
+    public List<CharacterContent> characterRaids(Character character) {
+        return characterContentRepository.findAllByCharacter(character);
     }
 
-    public CharacterRaid createCharacterRaid(CharacterRaidRequest characterRaidRequest) {
-        CharacterRaid characterRaid = CharacterRaid.builder()
+    public CharacterContent createCharacterRaid(CharacterContentRequest characterRaidRequest) {
+        CharacterContent characterContent = CharacterContent.builder()
                 .character(characterRepository.findCharacterById(characterRaidRequest.getCharacterId()))
                 .raid(raidRepository.findRaidById(characterRaidRequest.getRaidId()))
                 .build();
 
-        characterRaidRepository.save(characterRaid);
-        return characterRaid;
+        characterContentRepository.save(characterContent);
+        return characterContent;
 
     }
 
-    public CharacterRaid checkRaid(CharacterRaidRequest characterRaidRequest) {
-        Character character = characterRepository.findById(characterRaidRequest.getCharacterId());
-        characterRaid.checkRaid();
-        return characterRaid;
+    public CharacterContent checkRaid(CharacterContentRequest characterContentRequest) {
+        CharacterContent characterContent = characterContentRepository.findById(
+                        characterContentRequest.getCharacterContentId())
+                .orElseThrow(()->new IllegalArgumentException("해당 정보가 없습니다."));
+        characterContent.checkRaid();
+        return characterContent;
+
     }
 
-    public CharacterRaid uncheckRaid(CharacterRaidRequest characterRaidRequest) {
-        Character character = characterRepository.findById(characterRaidRequest.getCharacterId());
-        characterRaid.uncheckRaid();
-        return characterRaid;
+    public CharacterContent uncheckRaid(CharacterContentRequest characterContentRequest) {
+        CharacterContent characterContent = characterContentRepository.findById(
+                        characterContentRequest.getCharacterContentId())
+                .orElseThrow(()->new IllegalArgumentException("해당 정보가 없습니다."));
+        characterContent.uncheckRaid();
+        return characterContent;
     }
 }

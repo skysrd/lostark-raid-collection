@@ -2,13 +2,10 @@ package skysrd.lostarkraidcollection.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import skysrd.lostarkraidcollection.domain.request.CharacterRaidRequest;
+import skysrd.lostarkraidcollection.domain.request.CharacterContentRequest;
 import skysrd.lostarkraidcollection.service.CharacterRaidService;
-import skysrd.lostarkraidcollection.service.CharacterService;
 
 import javax.validation.Valid;
 
@@ -25,18 +22,18 @@ public class CharacterRaidController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> characterRaid(@RequestBody @Valid CharacterRaidRequest characterRaidRequest) {
+    public ResponseEntity<?> characterRaid(@RequestBody @Valid CharacterContentRequest characterRaidRequest) {
         return ResponseEntity.ok(characterRaidService.createCharacterRaid(characterRaidRequest));
     }
 
     @PostMapping("/check")
-    public ResponseEntity<?> checkRaid(@RequestBody @Valid CharacterRaidRequest characterRaidRequest) {
+    public ResponseEntity<?> checkRaid(@RequestBody @Valid CharacterContentRequest characterRaidRequest) {
         characterRaidService.checkRaid(characterRaidRequest);
         return ResponseEntity.ok("checked successful");
     }
 
     @PostMapping("/uncheck")
-    public ResponseEntity<?> uncheckRaid(@RequestBody @Valid CharacterRaidRequest characterRaidRequest) {
+    public ResponseEntity<?> uncheckRaid(@RequestBody @Valid CharacterContentRequest characterRaidRequest) {
         characterRaidService.uncheckRaid(characterRaidRequest);
         return ResponseEntity.ok("unchecked successful");
     }

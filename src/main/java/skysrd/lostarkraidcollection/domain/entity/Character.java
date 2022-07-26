@@ -10,14 +10,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CHATACTER")
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-public class Character {
+public class Character extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "character_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "member_id")
     private Member parentMember;
 
     @Column(name = "character_name")

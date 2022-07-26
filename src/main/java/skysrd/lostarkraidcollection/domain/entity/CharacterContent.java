@@ -9,12 +9,12 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "CHARACTER_RAID")
+@Table(name = "CHARACTER_CONTENT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CharacterRaid {
+public class CharacterContent extends BaseEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "character_raid_id")
+    @Column(name = "character_content_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -22,14 +22,14 @@ public class CharacterRaid {
     private Character character;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "raid_id")
+    @JoinColumn(name = "content_id")
     private Raid raid;
 
-    @Column(name = "character_raid_status")
+    @Column(name = "is_done")
     private Boolean status;
 
     @Builder
-    public CharacterRaid(Character character, Raid raid) {
+    public CharacterContent(Character character, Raid raid) {
         this.character=character;
         this.raid=raid;
         this.status=false;

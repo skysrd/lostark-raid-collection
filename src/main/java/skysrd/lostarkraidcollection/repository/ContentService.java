@@ -5,7 +5,7 @@ import skysrd.lostarkraidcollection.domain.entity.Raid;
 
 import java.util.List;
 
-public interface RaidRepository extends JpaRepository<Raid, Long> {
+public interface ContentService extends JpaRepository<Raid, Long> {
     Raid findRaidById(Long id);
     List<Raid> findAll();
 }

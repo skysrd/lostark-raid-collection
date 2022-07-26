@@ -9,22 +9,22 @@ import javax.persistence.*;
 @Getter
 @Entity
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "RAID")
-public class Raid {
+@Table(name = "CONTENT")
+public class Raid extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "raid_id")
+    @Column(name = "content_id")
     private Long id;
 
-    @Column(name = "raid_name")
+    @Column(name = "content_name")
     private String name;
 
-    @Column("raid_start_level")
-    private Integer startLevel;
+    @Column(name = "content_min_level")
+    private int minLevel;
 
-    @Column("raid_end_level")
-    private Integer endLevel;
+    @Column(name = "content_max_level")
+    private int maxLevel;
 
-    @Column("raid_gold")
-    private Integer gold;
+    @Column(name = "content_reward")
+    private int reward;
 }

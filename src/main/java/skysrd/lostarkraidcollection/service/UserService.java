@@ -1,5 +1,5 @@
-package skysrd.lostarkraidcollection.service;
-
-public class UserService {
-
-}
+//package skysrd.lostarkraidcollection.service;
+//
+//public class UserService {
+//
+//}

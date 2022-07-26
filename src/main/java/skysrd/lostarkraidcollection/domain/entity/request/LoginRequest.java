@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import skysrd.lostarkraidcollection.domain.entity.Member;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberRequest {
+public class LoginRequest {
     private String username;
     private String password;
 
